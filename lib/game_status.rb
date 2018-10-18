@@ -14,8 +14,6 @@ WIN_COMBINATIONS= [
   [2,4,6],
 ]
 
-board=[" ", " ", " ", " ", " ", " ", " ", " ", " "]
-
 def won?(board)
   empty = board.all? do |space|
     space == " "
@@ -82,6 +80,7 @@ def over?(board)
 end
 
 def winner(board)
+
   if draw?(board)
     return nil
   end

@@ -17,81 +17,86 @@ WIN_COMBINATIONS = [
 
 board=[" ", " ", " ", " ", " ", " ", " ", " ", " "]
 
- def won? (board)
- #empty field
-empty = board.all? do |field|
-  field == " "
-end
- if empty
-  return false
-end
- #win
-WIN_COMBINATIONS.each do |set1|
-  if (board[set1[0]] == board[set1[1]] && board[set1[1]]  == board[set1[2]])
-    if (board[set1[0]] != " ")
-      return set1
+def won?(board)
+  empty = board.all? do |space|
+    space== " "
+  end
+  if empty
+    return false
+  end
+
+  WIN_COMBINATIONS.each do |combo|
+    if (board[combo[0]]==board[combo[1]] && board[board[1]]==board[combo[2]])
+      if (board[combo[0] != " "])
+        return combo
+      end
     end
   end
-end
- #draw
 
-  def full? (board)
-  emptyfield = board.detect do |field|
-    field == " "
+  if (full?(board) == true)
+    return false
   end
-   if (emptyfield == nil)
+  
+end
+
+def full?(board)
+  isitempty = board.detect do |space|
+    space == " "
+  end
+
+  if (isitempty == nil)
     return true
   else
     return false
   end
- end
-
- if(full?(board) == true)
-  return false
 end
- end
 
-def draw? (board)
-   wina = false
- WIN_COMBINATIONS.each do |set1|
-    if (board[set1[0]] == board[set1[1]] && board[set1[1]]  == board[set1[2]])
-      if (board[set1[0]] != " ")
-        wina = true
+def draw?(board)
+
+  winner = false
+
+  WIN_COMBINATIONS.each do |combo|
+    if (board[combo[0]]==board[combo[1]] && board[board[1]]==board[combo[2]])
+      if (board[combo[0] != " "])
+        winner = true
       end
     end
   end
- if (wina == true)
-  return false
+
+  if (winner==true)
+    return false
+  end
+
+  if (full?(board)==true)
+    return true
+  end
 end
 
- if(full?(board) == true)
-  return true
-end
-end
-
-def over? (board)
+def over?(broad)
   if draw?(board)
     return true
   end
-   if won? (board)
+
+  if won?(board)
     return true
   end
 end
 
-def winner (board)
-   if draw? (board)
-     return nil
-    end
-    if won? (board)
-      WIN_COMBINATIONS.each do |set1|
-        if (board[set1[0]] == board[set1[1]] && board[set1[1]]  == board[set1[2]])
-          if (board[set1[0]] == "X")
-            return "X"
-          end
-          if (board[set1[0]] == "O")
-            return "O"
-          end
+def winner(board)
+  if draw?(board)
+    return nil
+  end
+
+  if won?(board)
+    WIN_COMBINATIONS.each do |combo|
+    if (board[combo[0]]==board[combo[1]] && board[board[1]]==board[combo[2]])
+        if (board[combo[0] == "X"])
+          return X
+        end
+        if (board[combo[0]] == "O")
+          return "O"
         end
       end
     end
   end
+end

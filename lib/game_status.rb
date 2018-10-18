@@ -72,7 +72,7 @@ def draw?(board)
   end
 end
 
-def over?(broad)
+def over?(board)
   if draw?(board)
     return true
   end

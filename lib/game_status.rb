@@ -90,7 +90,7 @@ def winner(board)
     WIN_COMBINATIONS.each do |combo|
     if (board[combo[0]]==board[combo[1]] && board[board[1]]==board[combo[2]])
         if (board[combo[0]] == "X")
-          return X
+          return "X"
         end
         if (board[combo[0]] == "O")
           return "O"

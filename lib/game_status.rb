@@ -19,7 +19,7 @@ board=[" ", " ", " ", " ", " ", " ", " ", " ", " "]
 
 def won?(board)
   empty = board.all? do |space|
-    space== " "
+    space == " "
   end
   if empty
     return false
@@ -36,7 +36,7 @@ def won?(board)
   if (full?(board) == true)
     return false
   end
-  
+
 end
 
 def full?(board)

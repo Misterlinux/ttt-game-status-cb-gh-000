@@ -98,3 +98,5 @@ def winner(board)
     end
   end
 end
+
+#all thx to the fried list for the tech support

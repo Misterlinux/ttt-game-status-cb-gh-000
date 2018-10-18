@@ -23,7 +23,7 @@ def won?(board)
   end
 
   WIN_COMBINATIONS.each do |combo|
-    if (board[combo[0]] == board[combo[1]] && board[board[1]] == board[combo[2]])
+    if (board[combo[0]] == board[combo[1]] && combo[board[1]] == board[combo[2]])
       if (board[combo[0]] != " ")
         return combo
       end
@@ -53,7 +53,7 @@ def draw?(board)
   winner = false
 
   WIN_COMBINATIONS.each do |combo|
-    if (board[combo[0]]==board[combo[1]] && board[board[1]]==board[combo[2]])
+    if (board[combo[0]]==board[combo[1]] && board[combo[1]]==board[combo[2]])
       if (board[combo[0]] != " ")
         winner = true
       end
@@ -87,7 +87,7 @@ def winner(board)
 
   if won?(board)
     WIN_COMBINATIONS.each do |combo|
-    if (board[combo[0]]==board[combo[1]] && board[board[1]]==board[combo[2]])
+    if (board[combo[0]]==board[combo[1]] && board[combo[1]]==board[combo[2]])
         if (board[combo[0]] == "X")
           return "X"
         end
